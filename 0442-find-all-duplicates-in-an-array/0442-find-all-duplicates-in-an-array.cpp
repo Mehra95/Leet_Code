@@ -1,13 +1,16 @@
+// Using Constant Space Complexcity And O(N) Time Complexcity 
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
-        if(nums.empty())
-        return {};
         vector<int>ans;
-        sort(nums.begin(),nums.end());
-        for(int i=1;i<nums.size();i++){
-            if(nums[i]==nums[i-1])
-                ans.push_back(nums[i]);
+        for(int i=0;i<nums.size();i++){
+            int index=abs(nums[i])-1;
+            if(nums[index]<0){
+                ans.push_back(abs(nums[i]));
+            }
+            else{
+                nums[index]=-1*nums[index];
+            }
         }
         return ans;
     }
